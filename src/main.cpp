@@ -11,12 +11,15 @@ int main(int argc, char* argv[]) {
 	for(int i = 0; i < gds2File.numRecords(); i++) {
 		GDS2Record record = gds2File.getRecord(i);
 
-		cout << record.toString() << endl;
+		cout << record.toString();
 
 		// stops at the end of the lib
-		if(! record.toString().compare("endlib") == true)
-			break;
+		if(! record.toString().compare("End Library") == true)
+			{	cout << endl;
+				break;
+			}
 	}
+
 
 	return 0;
 }
