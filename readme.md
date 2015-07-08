@@ -1,5 +1,5 @@
 
-gds2ascii
+GDS to ASCII Dump
 ====================
 
 A GDS2 to ASCII converter (ascii dump) following the virtuoso 5.1 format.
