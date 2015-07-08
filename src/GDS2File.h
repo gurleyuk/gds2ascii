@@ -13,7 +13,7 @@ public:
 	unsigned int numRecords() {return m_gdsRecords.size();}
 	GDS2Record getRecord(unsigned int numRecord) {return m_gdsRecords[numRecord];}
 private:
-	std::ifstream 		m_gdsFile;
+	std::ifstream m_gdsFile;
 	std::vector<GDS2Record> m_gdsRecords;
 };
 
