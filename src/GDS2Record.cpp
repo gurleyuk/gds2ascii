@@ -209,7 +209,7 @@ double GDS2Record::getReal(unsigned short index) {
 	}
 
 	double d = m;
-	d = d*(pow(16, e-14));
+	d = d*(pow(16.0, e-14));
 	d = (s==1)?-d:d;
 
 	return d;
