@@ -17,5 +17,5 @@ make clean
 
 Converting a GDS 2 to ASCII Dump
 ```
-gds2ascii GDS_FILE > ASCIIDUMP_FILE
+./gds2ascii GDS_FILE > ASCIIDUMP_FILE
 ```
