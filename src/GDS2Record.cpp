@@ -1,3 +1,4 @@
+
 #include <ctime>
 #include <cmath>
 #include <sstream>
@@ -34,29 +35,29 @@ std::string GDS2Record::toString() {
 
 	switch(type()) {
 		case HEADER:
-	//		ssRecord << "header version=" << getShort(2); break;
+			// ssRecord << "header version=" << getShort(2); break;
 			break;
 		case BGNLIB:
 			ssRecord << "Begin Library" << endl;
-//			ssRecord << "bgnlib lastmodtime=\"" << getDateString(2) << "\" lastacctime=\"" << getDateString(14) << "\""; break;
+			// ssRecord << "bgnlib lastmodtime=\"" << getDateString(2) << "\" lastacctime=\"" << getDateString(14) << "\""; break;
 		case LIBNAME:
 			ssRecord << "Library Name : " << getString(2) << ", "; break;
 		case UNITS:
-			//auxRecord << "User Unit=" << getReal(2) 
+			// auxRecord << "User Unit=" << getReal(2) 
 			ssRecord << " DB units per user unit =" << int(getReal(2)/getReal(10)) << endl; break;
 		case ENDLIB: //nao existe
 			ssRecord << "End Library";  break;
-		//	ssRecord << "endlib"; break;
+			// ssRecord << "endlib"; break;
 		case BGNSTR:
 			ssRecord << "Begin Cell Definition" << endl; break;
 		case STRNAME:
 			ssRecord << "Cell Name : "<< getString(2) << endl; break;
 		case ENDSTR: // nao existe
 			ssRecord << "End Cell Definition" << endl; break;
-//			ssRecord << "endstr"; break;
+			// ssRecord << "endstr"; break;
 		case BOUNDARY: // boundary para polygon
 			ssRecord << "Polygon - "; break;
-//			ssRecord << "boundary"; break;
+			// ssRecord << "boundary"; break;
 		case PATH:
 			ssRecord << "path"; break;
 		case SREF:
@@ -68,12 +69,12 @@ std::string GDS2Record::toString() {
 		//	ssRecord << "layer " << getShort(2); break;
 		case DATATYPE:// Data Type
 			ssRecord << "Data Type : " << getShort(2) << "  "; break;
-		//	ssRecord << "datatype " << getShort(2); break;
+			// ssRecord << "datatype " << getShort(2); break;
 		case WIDTH:
 			ssRecord << "width " << getInt(2); break;
 		case XY: // tirando os erros de XY
 		{
-//			ssRecord << "xy ";
+			// ssRecord << "xy ";
 			auxRecord << "";
 			int index = 2;
 			int count=0;
@@ -84,10 +85,9 @@ std::string GDS2Record::toString() {
 				count++;
 				if(count%4 == 0) 
 					auxRecord << endl;
-
 				
-//				ssRecord << "(x=" << getInt(index) << " y=" << getInt(index+4) << ") ";
-//				index += 8;
+				// ssRecord << "(x=" << getInt(index) << " y=" << getInt(index+4) << ") ";
+				// index += 8;
 			}
 
 			ssRecord << "No of points : " << count << endl;
@@ -96,68 +96,68 @@ std::string GDS2Record::toString() {
 		}
 		case ENDEL: // nao existe
 			ssRecord << ""; break;
-//			ssRecord << "endel"; break;
+			// ssRecord << "endel"; break;
 
 		case TEXT:
 			ssRecord << "Text - "; break;
 
 		case SNAME:
-//			ssRecord << "sname \"" << getString(2) << "\""; break;
+			// ssRecord << "sname \"" << getString(2) << "\""; break;
 		case COLROW:
-//			ssRecord << "colrow columns=" << getShort(2) << " rows=" << getShort(4); break;
+			// ssRecord << "colrow columns=" << getShort(2) << " rows=" << getShort(4); break;
 		case TEXTNODE: // What is this?
-//			return "record type not implemented."; 
+			// return "record type not implemented."; 
 		case NODE:
-//			ssRecord << "node"; break;
+			// ssRecord << "node"; break;
 		case TEXTTYPE:
-//			ssRecord << "Text Type : " << getShort(2) << " "; break;
+			// ssRecord << "Text Type : " << getShort(2) << " "; break;
 		case PRESENTATION: /// Incomplete. Extract report sepcicic elements.
-//			ssRecord << "presentation " << getShort(2); break;
+			// ssRecord << "presentation " << getShort(2); break;
 		case STRING:
-//			ssRecord << "string \"" << getString(2) << "\"" << endl; break;
+			// ssRecord << "string \"" << getString(2) << "\"" << endl; break;
 		case STRANS: // Incomplete. Extract report sepcicic elements.
-//			ssRecord << "strans " << getShort(2); break;
+			// ssRecord << "strans " << getShort(2); break;
 		case MAG:
-//			ssRecord << "mag " << getReal(2); break;
+			// ssRecord << "mag " << getReal(2); break;
 		case ANGLE:
-//			ssRecord << "angle " << getReal(2); break;
+			// ssRecord << "angle " << getReal(2); break;
 		case REFLIBS:
-//			ssRecord << "reflibs \"" << getString(2) << "\""; break;
+			// ssRecord << "reflibs \"" << getString(2) << "\""; break;
 		case FONTS:
-//			ssRecord << "fonts \"" << getString(2) << "\""; break;
+			// ssRecord << "fonts \"" << getString(2) << "\""; break;
 		case PATHTYPE:
-//			ssRecord << "pathtype " << getShort(2); break;
+			// ssRecord << "pathtype " << getShort(2); break;
 		case GENERATIONS:
-//			ssRecord << "generations " << getShort(2); break;
+			// ssRecord << "generations " << getShort(2); break;
 		case ATTRTABLE:
-//			ssRecord << "attrtable " << getShort(2); break;
+			// ssRecord << "attrtable " << getShort(2); break;
 		case STYPTABLE:
-//			ssRecord << "styptable " << getShort(2); break;
+			// ssRecord << "styptable " << getShort(2); break;
 		case STRTYPE:
-//			ssRecord << "strtype " << getShort(2); break;
+			// ssRecord << "strtype " << getShort(2); break;
 		case ELFLAGS: // Incomplete. Extract report sepcicic elements.
-//			ssRecord << "elflags " << getShort(2); break;
+			// ssRecord << "elflags " << getShort(2); break;
 		case ELKEY:
-//			ssRecord << "elkey " << getShort(2); break;
+			// ssRecord << "elkey " << getShort(2); break;
 		case NODETYPE:
-//			ssRecord << "nodetype " << getShort(2); break;
+			// ssRecord << "nodetype " << getShort(2); break;
 		case PROPATTR:
-//			ssRecord << "propattr " << getShort(2); break;
+			// ssRecord << "propattr " << getShort(2); break;
 		case PROPVALUE:
-//			ssRecord << "propvalue " << getString(2); break;
+			// ssRecord << "propvalue " << getString(2); break;
 		case BOX:
-//			ssRecord << "box "; break;
+			// ssRecord << "box "; break;
 		case BOXTYPE:
-//			ssRecord << "boxtype " << getShort(2); break;
+			// ssRecord << "boxtype " << getShort(2); break;
 		case PLEX:
-//			ssRecord << "plex " << getShort(2); break;
+			// ssRecord << "plex " << getShort(2); break;
 		case FORMAT:
-//			ssRecord << "format " << getShort(2); break;
+			// ssRecord << "format " << getShort(2); break;
 		case MASK:
-//			ssRecord << "mask \"" << getString(2) << "\""; break;
+			// ssRecord << "mask \"" << getString(2) << "\""; break;
 		case ENDMASKS: // nao existe
 			ssRecord << ""; break;
-//			ssRecord << "endmasks "; break;
+			// ssRecord << "endmasks "; break;
 
 		default:
 			return toHexString();
