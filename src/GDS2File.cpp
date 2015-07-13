@@ -1,14 +1,16 @@
+
 #include "GDS2File.h"
 
 using namespace std;
 using namespace gds;
 
 GDS2File::GDS2File(const char* fileName) : m_gdsFile(fileName, ios::in | ios::binary) {
+
 	while(!m_gdsFile.eof()) {
 		char bufNumBytes[2];
 		char* bufRecord;
 		unsigned short numBytes;
-		
+
 		m_gdsFile.read(bufNumBytes, 2);
 		if(m_gdsFile.eof())
 			break;
